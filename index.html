@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tic-tac-toe is a game in which two players
+    take turns in drawing either an ` O' or an ` X' in one square of a grid
+    consisting of nine squares. The winner is the first player to get three of
+    the same symbols in a row. />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/queries.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <main class="main">
+      <section id="game-menu" class="game-menu">
+        <img src="./assets/logo.svg" alt="Image of X and O" />
+        <div class="choose-marker">
+          <h1 class="player1-mark">PICK PLAYER 1'S MARK</h1>
+          <div class="btn-container">
+            <button type="button" class="btn-x svg-fill"" id="btn-x" onclick ="selectMarkX()">
+              <span class="checkmark">
+                <svg
+                  class="Xsvg"
+                  width="64"
+                  height="64"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="XsvgPath"
+                    d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                    fill="hsl( var(--clr-silver) )"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button type="button" class="btn-o" id="btn-o" onclick ="selectMarkO()">
+              <span class="checkmark">
+                <svg
+                  class="Osvg"
+                  width="64"
+                  height="64"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="OsvgPAth"
+                    d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+                    fill="hsl( var(--clr-silver) )"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <h2 class="xfirst">REMEMBER: X GOES FIRST</h2>
+        </div>
+        <button onclick="newGameCpu()" id="cpu-btn" class="cpu-btn" data-value="">
+          NEW GAME(VS CPU)
+        </button>
+        <button onclick="newGamePlayer()" id="player-btn" class="player-btn" data-value="">
+          NEW GAME(VS PLAYER)
+        </button>
+      </section>
+      <section id="game-board" class="game-board hidden">
+        <div class="game-header">
+          <img src="./assets/logo.svg" alt="Logo" />
+          <div class="turn-counter">
+            <img src="./assets/icon-x.svg" alt="X-TURN" id="turn" data-value ="X" />
+            <p class="turn">TURN</p>
+          </div>
+          <button class="restart" onclick="restart()">
+            <img src="./assets/icon-restart.svg" alt="Restart" />
+          </button>
+        </div>
+        <div class="boxes">
+          <div
+          id="0"
+            onclick="pickBox('0')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="1"
+            onclick="pickBox('1')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="2"
+            onclick="pickBox('2')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="3"
+            onclick="pickBox('3')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="4"
+            onclick="pickBox('4')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="5"
+            onclick="pickBox('5')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="6"
+            onclick="pickBox('6')"
+            class="box hover-box hover-x hover-0"
+            data-value=""
+          ></div>
+          <div
+          id="7"
+            onclick="pickBox('7')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+          <div
+          id="8"
+            onclick="pickBox('8')"
+            class="box hover-box hover-x"
+            data-value=""
+          ></div>
+        </div>
+        <div class="scores">
+          <div id="x-win" class="box-score score1">
+            <p id="player1" class="player1">X(P1)</p>
+            <p class="player1-score" id ="x-score">0</p>
+          </div>
+          <div id="tie" class="box-score tie">
+            <p class="ties ">TIES</p>
+            <p class="tie-number" id="tie-score">0</p>
+          </div>
+          <div id="o-win" class="box-score score2">
+            <p id="player2" class="player2">O(P2)</p>
+            <p class="player2-score" id="o-score">0</p>
+          </div>
+        </div>
+      </section>
+      <section id="modal" class="modal hidden ">
+        <div id="endGameModal" class="endGameModal">
+            <p id="winnerName" class="uppercase">Oh no, you lost...</p>
+
+            <div class="flex">
+              <img
+                id="winner-mark"
+                src="./assets/icon-o.svg"
+                alt="winner-mark"
+              />
+              <h2 id="winnerTakes" class="uppercase font-800">takes the round</h2>
+            </div>
+
+            <div>
+              <button
+                onclick="restartGame()"
+                class="quitBtn uppercase font-600"
+              >
+                Quit
+              </button>
+              <button
+                onclick="nextRound()"
+                class="nextBtn"
+              >
+                Next Round
+              </button>
+            </div>
+          </div>
+
+          <div id="restartGame" class="restartGame">
+            <p class="font-800 uppercase">restart game?</p>
+            <div>
+              <button
+                onclick="cancelReset()"
+                class="cancelBtn font-600 uppercase"
+              >
+                No, cancel
+              </button>
+              <button
+                onclick="restartGame()"
+                class="restartBtn font-600 uppercase "
+              >
+                Yes, restart
+              </button>
+            </div>
+          </div>
+       
+      </section>
+    </main>
+    <footer class="footer">Coded by Sirbu Gabriel</footer>
+    <script src="script.js"></script>
+  </body>
+</html>

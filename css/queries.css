@@ -1,0 +1,137 @@
+@media (max-width: 30em) {
+  .game-menu img {
+    max-width: 100%;
+  }
+  .choose-marker {
+    width: 330px;
+  }
+  .btn-container {
+    width: 240px;
+  }
+  .cpu-btn,
+  .player-btn {
+    width: 330px;
+  }
+  .game-board {
+    width: 22rem;
+    margin: 0 auto;
+  }
+  .game-header {
+    width: 20rem;
+    margin-bottom: 2rem;
+    margin-top: 6rem;
+  }
+  .turn-counter {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .box {
+    width: 6rem;
+    height: 6rem;
+  }
+  .boxes {
+    width: 20rem;
+  }
+  .scores {
+    width: 20rem;
+    display: flex;
+    margin-left: 0.5rem;
+    margin-top: 1rem;
+  }
+  .box-score {
+    width: 6rem;
+  }
+}
+@media (max-width: 22em) {
+  .game-menu img {
+    max-width: 100%;
+  }
+  .choose-marker {
+    width: 240px;
+  }
+  .btn-container {
+    width: 200px;
+  }
+  .cpu-btn,
+  .player-btn {
+    width: 240px;
+  }
+}
+
+@media (max-height: 60rem) {
+  .game-menu img {
+    margin-top: 4rem;
+  }
+  .game-header {
+    margin-top: 4rem;
+  }
+  .boxes {
+    height: 20rem;
+  }
+  .box {
+    height: 6.5rem;
+  }
+  .modal {
+    top: 12rem;
+    height: 10rem;
+    padding: 1rem 0;
+  }
+  .font-800 {
+    font-size: 1rem;
+  }
+  /* .scores {
+    margin-top: 2rem; */
+}
+@media (min-height: 70rem) {
+  .footer {
+    margin-bottom: 10rem;
+    margin-top: 1rem;
+  }
+  .game-menu img {
+    margin-top: 4rem;
+  }
+  .game-header {
+    margin-top: 4rem;
+  }
+  .boxes {
+    height: 40rem;
+  }
+  .box {
+    height: 10rem;
+  }
+  .modal {
+    top: 20rem;
+    height: 15rem;
+    padding: 4rem 0;
+  }
+  .font-800 {
+    font-size: 1.5rem;
+  }
+  .game-board {
+    width: 40rem;
+    margin: 0 auto;
+  }
+  .game-header {
+    width: 40rem;
+    margin-bottom: 2rem;
+    margin-top: 6rem;
+  }
+  .turn-counter {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .box {
+    width: 12rem;
+    height: 12rem;
+  }
+  .boxes {
+    width: 40rem;
+  }
+  .scores {
+    width: 40rem;
+    display: flex;
+  }
+  .box-score {
+    width: 12rem;
+  }
+}
