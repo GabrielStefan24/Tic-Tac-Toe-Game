@@ -102,7 +102,39 @@ function newGamePlayer() {
 function restartGame() {
   window.location.reload();
 }
+
+function checkWin(currentPlayer) {
+  for (some of winningCombo) {
+    const isContained = (a, b) => {
+      for (const c of new Set(a)) {
+        if (!b.some((e) => e === c)) return false;
+      }
+      for (empty of allBox) {
+        if (empty.getAttribute("data-value") === "") {
+          empty.classList.remove("hover-x");
+          empty.classList.remove("hover-o");
+          empty.setAttribute("onclick", "");
+        }
+      }
+
+      isAWinner = true;
+      results();
+      return true;
+    };
+    isContained(some, currentPlayer);
+  }
+
+  if (isAWinner === false && xPattern.length + oPattern.length === 9) {
+    for (all of allBox) {
+      all.classList.remove("hover-o");
+      all.classList.remove("hover-x");
+      all.setAttribute("onclick", "");
+    }
+    draw();
+  }
+}
 function pickBox(box) {
+  console.log(isAWinner);
   let pickedBox = document.getElementById(box);
   let img = document.createElement("img");
 
@@ -114,6 +146,7 @@ function pickBox(box) {
     pickedBox.setAttribute("data-value", "X");
     pickedBox.setAttribute("onclick", "");
     turn.setAttribute("data-value", "O");
+    console.log(pickedBox);
     turn.src = "./assets/icon-o.svg";
     xPattern.push(parseInt(pickedBox.id, 10));
     xPattern.sort();
@@ -176,35 +209,7 @@ function pickBox(box) {
     cpuTurn();
   }
 }
-function checkWin(currentPlayer) {
-  for (some of winningCombo) {
-    const isContained = (a, b) => {
-      for (const c of new Set(a)) {
-        if (!b.some((e) => e === c)) return false;
-      }
-      for (empty of allBox) {
-        if (empty.getAttribute("data-value") === "") {
-          empty.classList.remove("hover-x");
-          empty.classList.remove("hover-o");
-          empty.setAttribute("onclick", "");
-        }
-      }
-      isAWinner = true;
-      results();
-      return true;
-    };
-    isContained(some, currentPlayer);
-  }
 
-  if (isAWinner === false && xPattern.length === 5 && oPattern.length === 4) {
-    for (all of allBox) {
-      all.classList.remove("hover-o");
-      all.classList.remove("hover-x");
-      all.setAttribute("onclick", "");
-    }
-    draw();
-  }
-}
 async function cpuTurn() {
   if (btnX.classList.contains("svg-fill")) {
     const promise = new Promise((resolve, reject) => {
@@ -226,7 +231,7 @@ async function cpuTurn() {
     });
     await promise;
 
-    setTimeout(cpuPlay, 1000);
+    setTimeout(cpuPlay, 500);
   }
 
   if (btnO.classList.contains("svg-fill")) {
@@ -336,6 +341,7 @@ function draw() {
   drawScore.innerHTML++;
 }
 function nextRound() {
+  isAWinner = false;
   let boxPlayed = document.querySelectorAll(".boxPlayed");
   modal.style.display = "none";
   endGame.style.display = "none";
