@@ -24,7 +24,7 @@ let allBox = document.getElementsByClassName("box");
 let turn = document.getElementById("turn");
 const gameBoard = document.getElementById("game-board");
 const gameMenu = document.getElementById("game-menu");
-
+let gameState = ["", "", "", "", "", "", "", "", ""];
 const cells = document.querySelectorAll(".box");
 const cellsArr = Array.from(cells);
 const btnX = document.getElementById("btn-x");
@@ -33,7 +33,7 @@ const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
 const cpuBtn = document.getElementById("cpu-btn");
 const playerBtn = document.getElementById("player-btn");
-
+let isPlayerTurn = true;
 const modal = document.getElementById("modal");
 const endGame = document.getElementById("endGameModal");
 const restartingGame = document.getElementById("restartGame");
@@ -134,6 +134,9 @@ function checkWin(currentPlayer) {
   }
 }
 function pickBox(box) {
+  if (!isPlayerTurn) {
+    return;
+  }
   console.log(isAWinner);
   let pickedBox = document.getElementById(box);
   let img = document.createElement("img");
@@ -231,7 +234,7 @@ async function cpuTurn() {
     });
     await promise;
 
-    setTimeout(cpuPlay, 500);
+    setTimeout(cpuPlay, 800);
   }
 
   if (btnO.classList.contains("svg-fill")) {
@@ -246,6 +249,7 @@ async function cpuTurn() {
         box6.setAttribute("onclick", "");
         box7.setAttribute("onclick", "");
         box8.setAttribute("onclick", "");
+
         resolve();
       }
       if (winnerO === true) {
@@ -253,7 +257,7 @@ async function cpuTurn() {
       }
     });
     await promise;
-    setTimeout(cpuPlay, 1000);
+    setTimeout(cpuPlay, 800);
   }
 }
 
